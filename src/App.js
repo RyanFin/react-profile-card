@@ -3,11 +3,44 @@ import "./styles.css";
 export default function App() {
   return (
     <div className="App">
-      <h1>Challenge (Profile Card v1!)</h1>
+      <h1>Challenge (Profile Card v2!)</h1>
       <Card />
     </div>
   );
 }
+
+const skills = [
+  {
+    skill: "Go",
+    level: "advanced",
+    color: "lightblue"
+  },
+  {
+    skill: "React JS",
+    level: "intermediate",
+    color: "#3283ed"
+  },
+  {
+    skill: "Python",
+    level: "intermediate",
+    color: "green"
+  },
+  {
+    skill: "Javascript",
+    level: "intermediate",
+    color: "yellow"
+  },
+  {
+    skill: "Ruby-on-Rails",
+    level: "beginner",
+    color: "red"
+  },
+  {
+    skill: "Rust",
+    level: "beginner",
+    color: "orange"
+  }
+];
 
 function Card() {
   return (
@@ -39,21 +72,30 @@ function Avatar(props) {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skillName="Go" emoji="👌" color="lightblue" />
-      <Skill skillName="React JS" emoji="🤫" color="#3283ed" />
-      <Skill skillName="Python" emoji="🐍" color="green" />
-      <Skill skillName="JavaScript" emoji="🗣" color="yellow" />
-      <Skill skillName="Ruby-on-Rails" emoji="🌬" color="red" />
+      {skills.map((skill, index) => <Skill skillName={skill.skill} level={skill.level} color={skill.color} key={index}/>)}
     </div>
   );
 }
 
-function Skill(props) {
+function Skill({skillName, level,  color}) {
+  var emoji = ''
+
+  if (level === 'beginner'){
+    emoji = '👶';
+  }
+
+  if(level === 'intermediate'){
+    emoji = '👍';
+  }
+  if (level === 'advanced'){
+    emoji = '🦾';
+  }
+  
   return (
     <div>
-      <h3 className="skill" style={{ backgroundColor: props.color }}>
+      <h3 className="skill" style={{ backgroundColor: color }}>
         <span>
-          {props.skillName} {props.emoji}
+          {skillName} {emoji}
         </span>
       </h3>
     </div>
