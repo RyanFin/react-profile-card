@@ -78,25 +78,30 @@ function SkillList() {
 }
 
 function Skill({skillName, level,  color}) {
-  var emoji = ''
+  // var emoji = ''
 
-  if (level === 'beginner'){
-    emoji = '👶';
-  }
+  // convert level value into an emoji value
+  // if (level === 'beginner'){
+  //   emoji = '👶';
+  // }
 
-  if(level === 'intermediate'){
-    emoji = '👍';
-  }
-  if (level === 'advanced'){
-    emoji = '🦾';
-  }
+  // if(level === 'intermediate'){
+  //   emoji = '👍';
+  // }
+
+  // if (level === 'advanced'){
+  //   emoji = '🦾';
+  // }
   
   return (
     <div>
       <h3 className="skill" style={{ backgroundColor: color }}>
         <span>
-          {skillName} {emoji}
+          {skillName} 
         </span>
+        <span>{level === 'beginner' && '👶'}
+        {level === 'intermediate' && '👶'}
+        {level === 'advanced' && '👶'}</span>
       </h3>
     </div>
   );
